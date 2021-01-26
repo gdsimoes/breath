@@ -1,0 +1,73 @@
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial,
+        sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+}
+
+#outer {
+    border: solid;
+    border-radius: 10px;
+    width: 20vw;
+    height: 50vh;
+
+    margin: 0 auto;
+
+    display: flex;
+    flex-direction: column-reverse;
+
+    /* This is necessary for the inner div to respect the outer div boundaries */
+    overflow: hidden;
+}
+
+#inner {
+    background-color: #7cb9e8;
+    opacity: 0.2;
+    width: 100%;
+    height: 0%;
+
+    animation-name: breathing;
+    animation-duration: 11s;
+    animation-iteration-count: infinite;
+}
+@keyframes breathing {
+    50% {
+        opacity: 1;
+        height: 100%;
+    }
+}
+
+#message {
+    text-align: center;
+    /* opacity: 1; */
+}
+#message::after {
+    content: "";
+    animation: change-message 11s step-end 0s infinite normal none,
+        change-opacity 5.5s ease 0s infinite normal none;
+}
+@keyframes change-message {
+    0% {
+        content: "inhale...";
+    }
+
+    50% {
+        /* opacity: 1; */
+        content: "exhale...";
+    }
+}
+@keyframes change-opacity {
+    0% {
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    70% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
